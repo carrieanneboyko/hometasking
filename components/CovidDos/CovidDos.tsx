@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
+const CenteredRules = styled.div`
+ text-align: center;
+`
 const StyledRule = styled.li`
   padding-bottom: 10px;
 `
@@ -14,7 +17,7 @@ const StyledRuleList = styled.ul`
 `
 const CovidDos: React.FC<{}> = () => {
   return (
-    <div>
+    <CenteredRules>
       <div>During all tasks, the following rules are in effect.</div>
       <div>
         Failure to follow these rules may result in infection and worse,
@@ -33,7 +36,9 @@ const CovidDos: React.FC<{}> = () => {
         <StyledRule>Use your imagination.</StyledRule>
         <StyledRule>Have fun.</StyledRule>
       </StyledRuleList>
-    </div>
+      <img src="/img/taskmaster-seal.png"/>
+
+    </CenteredRules>
   );
 };
 
