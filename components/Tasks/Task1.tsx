@@ -54,6 +54,8 @@ const Tasks: React.FC<{ entries?: any }> = ({ entries }) => {
         startTime={new Date("March 23, 2020, 9:00 GMT")}
         endTime={addHours(new Date("March 23, 2020, 9:00 GMT"), 30)}
       />
+      <TwitterTweetEmbed tweetId={`1242466255388336128`} />
+
       <TaskmasterAddendum>
         <p>
           All tasks must be uploaded to Twitter with the hashtag "#HomeTasking"
