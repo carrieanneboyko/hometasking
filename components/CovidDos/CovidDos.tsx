@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const CenteredRules = styled.div`
- text-align: center;
-`
+  text-align: center;
+`;
 const StyledRule = styled.li`
   padding-bottom: 10px;
-`
+`;
 const StyledRuleList = styled.ul`
   padding-top: 20px;
   max-width: 600px;
@@ -14,7 +14,7 @@ const StyledRuleList = styled.ul`
   text-align: left;
   margin: auto;
   padding-bottom: 15px;
-`
+`;
 const CovidDos: React.FC<{}> = () => {
   return (
     <CenteredRules>
@@ -25,7 +25,9 @@ const CovidDos: React.FC<{}> = () => {
       </div>
 
       <StyledRuleList>
-        <StyledRule>All the tasks should take place in your homes or gardens.</StyledRule>
+        <StyledRule>
+          All the tasks should take place in your homes or gardens.
+        </StyledRule>
         <StyledRule>
           Obey the social distancing advice and keep at least 2 meters (about
           3.97 baby rhinoceri) away from people not in your household.
@@ -36,8 +38,7 @@ const CovidDos: React.FC<{}> = () => {
         <StyledRule>Use your imagination.</StyledRule>
         <StyledRule>Have fun.</StyledRule>
       </StyledRuleList>
-      <img src="/img/taskmaster-seal.png"/>
-
+      <img src="/img/taskmaster-seal.png" />
     </CenteredRules>
   );
 };

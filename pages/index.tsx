@@ -1,8 +1,10 @@
 import React from "react";
+import styled from "styled-components";
 import TimeStartsNow from "../components/TimeStartsNow";
 import CovidDos from "../components/CovidDos";
 import VideoHolder from "../components/VideoHolder";
-import styled from "styled-components";
+import TaskList from "../components/Tasks/TaskList";
+import FullWidthHR from "../components/styled/FullWidthHR";
 
 const MainStyle = styled.div`
   font-family: "Special Elite", Courier New, Courier, monospace;
@@ -12,29 +14,19 @@ const NotTaskStyle = styled.div`
   font-family: Helvetica, Arial, sans-serif;
   text-align: left;
 `;
+
 const WashHands: React.FC<{}> = () => (
-  <iframe
-    width="560"
-    height="315"
-    frameBorder={0}
-    src="https://www.youtube.com/embed/AWZCcwJZses"
-    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen={true}
-  ></iframe>
+  <VideoHolder
+    isTaskmaster={false}
+    src={`https://www.youtube.com/embed/AWZCcwJZses`}
+  />
 );
 
 const HomeTaskingIntro: React.FC<{}> = () => (
-  <VideoHolder src={`https://www.youtube.com/embed/_DQ32Vahb1E`} />
-);
-const Task1Video: React.FC<{}> = () => (
-  <iframe
-    width="560"
-    height="315"
-    src="https://www.youtube.com/embed/7tJCKtyz47E"
-    frameBorder="0"
-    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen
-  ></iframe>
+  <VideoHolder
+    isTaskmaster={true}
+    src={`https://www.youtube.com/embed/_DQ32Vahb1E`}
+  />
 );
 
 const IndexPage: React.FC<{}> = () => (
@@ -54,11 +46,14 @@ const IndexPage: React.FC<{}> = () => (
         <em>self-appointed</em>
       </div>
     </NotTaskStyle>
-    <hr />
+    <FullWidthHR />
     <TimeStartsNow />
     <HomeTaskingIntro />
+    <FullWidthHR />
+
+    <TaskList />
+    <FullWidthHR />
     <CovidDos />
-    <Task1Video />
     <h3>Here's how long to wash your hands</h3>
     <WashHands />
   </MainStyle>
