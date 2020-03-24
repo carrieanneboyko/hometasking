@@ -34,3 +34,5 @@ const CovidDos: React.FC<{}> = () => {
     </div>
   );
 };
+
+export default CovidDos;
