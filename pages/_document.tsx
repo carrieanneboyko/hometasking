@@ -19,7 +19,7 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <link
-            href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap"
+            href="https://fonts.googleapis.com/css?family=Special+Elite|Titillium+Web:700&display=swap"
             rel="stylesheet"
           ></link>
         </Head>
