@@ -20,6 +20,13 @@ const taskList = [
     url: "/tasks/1",
     startTime: new Date("March 23, 2020, 9:00 GMT"),
     endTime: addHours(new Date("March 23, 2020, 9:00 GMT"), 30)
+  },
+  {
+    number: "Task #2",
+    description: "Convert your bathroom into a nice venue",
+    url: "/tasks/2",
+    startTime: new Date("March 25, 2020, 9:00 GMT"),
+    endTime: addHours(new Date("March 25, 2020, 9:00 GMT"), 30)
   }
 ];
 const StyledTaskListFlex = styled.div`

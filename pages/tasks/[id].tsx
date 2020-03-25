@@ -3,6 +3,8 @@ import { NextPage } from "next";
 import { useRouter } from "next/router";
 import NoTaskYet from "./no-task-yet";
 import Task1 from "../../components/Tasks/Task1";
+import Task2 from "../../components/Tasks/Task2";
+
 import fetch from "isomorphic-unfetch";
 
 const SwitchTasks: React.FC<{ id: any; entries?: any }> = ({ id, entries }) => {
@@ -10,6 +12,8 @@ const SwitchTasks: React.FC<{ id: any; entries?: any }> = ({ id, entries }) => {
   switch (parsedId) {
     case 1:
       return <Task1 entries={entries} />;
+    case 2:
+      return <Task2 entries={entries} />;
     case NaN:
     default:
       return <NoTaskYet id={id} />;

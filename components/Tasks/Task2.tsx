@@ -35,44 +35,37 @@ const TaskmasterAddendum = styled.div`
 const Tasks: React.FC<{ entries?: any }> = ({ entries }) => {
   return (
     <MainStyle>
-      <TaskmasterH1>Task #1</TaskmasterH1>
+      <TaskmasterH1>Task #2</TaskmasterH1>
       <FullWidthHR />
       <VideoHolder
-        src={`https://www.youtube.com/embed/7tJCKtyz47E`}
+        src={`https://www.youtube.com/embed/BBWmRvIT0QY`}
         isTaskmaster={true}
       ></VideoHolder>
       <TaskmasterTask>
-        <p>Throw a piece of A4 paper into a bin.</p>
-        <p>Most spectacular throw wins.</p>
-        <p>One entry per household.</p>
+        <p>Turn your bathroom into the sort of venue you might visit for a great night out.</p>
+        <p>Best bathroom conversion wins.</p>
         <p>You have 30 hours.</p>
         <p>Your time starts now.</p>
         <FullWidthHR />
-        <TwitterTweetEmbed tweetId={`1242073477659668483`} />
       </TaskmasterTask>
       <Timer
-        startTime={new Date("March 23, 2020, 9:00 GMT")}
-        endTime={addHours(new Date("March 23, 2020, 9:00 GMT"), 30)}
+        startTime={new Date("March 25, 2020, 9:00 GMT")}
+        endTime={addHours(new Date("March 25, 2020, 9:00 GMT"), 30)}
       />
-      <TwitterTweetEmbed tweetId={`1242466255388336128`} />
+      {/* <TwitterTweetEmbed tweetId={`1242466255388336128`} /> */}
 
       <TaskmasterAddendum>
         <p>
           All tasks must be uploaded to Twitter with the hashtag "#HomeTasking"
           to be considered.
         </p>
-        <p>Please keep your clip under one minute long.</p>
+        <p>Please keep your clip under 20 seconds if possible.</p>
         <p>The Taskmaster's decision is final.</p>
       </TaskmasterAddendum>
       <FullWidthHR />
-      <TaskmasterH1>Results</TaskmasterH1>
-      <VideoHolder
-        src={`https://www.youtube.com/embed/z0-C5GH_yxU`}
-        isTaskmaster={true}
-      ></VideoHolder>
-      <FullWidthHR />
       <CovidDos />
       <FullWidthHR />
+      <Entries entries={entries} />
     </MainStyle>
   );
 };
