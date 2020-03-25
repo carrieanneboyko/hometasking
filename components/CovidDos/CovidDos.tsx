@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import sixFeet from '../../utils/sixFeet';
+
 const CenteredRules = styled.div`
   text-align: center;
 `;
@@ -29,8 +31,8 @@ const CovidDos: React.FC<{}> = () => {
           All the tasks should take place in your homes or gardens.
         </StyledRule>
         <StyledRule>
-          Obey the social distancing advice and keep at least 2 meters (about
-          3.97 baby rhinoceri) away from people not in your household.
+          Obey the social distancing advice and keep at least 2 meters (or{` `}
+          {sixFeet()}) away from people not in your household.
         </StyledRule>
         <StyledRule>Do not break the law.</StyledRule>
         <StyledRule>Don't hurt anyone.</StyledRule>
