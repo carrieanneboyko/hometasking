@@ -7,6 +7,7 @@ import addHours from "date-fns/addHours";
 import FullWidthHR from "../styled/FullWidthHR";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 import Entries from "../Entries";
+import { task1Points } from "./points";
 
 const MainStyle = styled.div`
   font-family: "Special Elite", Courier New, Courier, monospace;
@@ -31,6 +32,18 @@ const TaskmasterTask = styled.div`
 const TaskmasterAddendum = styled.div`
   font-family: "Special Elite";
 `;
+
+const StyledPointsList = styled.div`
+  padding: 10px;
+`
+const StyledSeal = styled.span`
+  padding: 5px; 
+  margin: 5px;
+  border-radius: 50%;
+  color: white;
+
+  background-color: red;
+`
 
 const Tasks: React.FC<{ entries?: any }> = ({ entries }) => {
   return (
@@ -70,6 +83,17 @@ const Tasks: React.FC<{ entries?: any }> = ({ entries }) => {
         src={`https://www.youtube.com/embed/z0-C5GH_yxU`}
         isTaskmaster={true}
       ></VideoHolder>
+      <TaskmasterTask>
+        <p>Task #1 Points</p>
+        {Object.entries(task1Points)
+          .sort(([_nameA, pointsA], [_nameB, pointsB]) => pointsA - pointsB)
+          .map(([name, points]) => (
+            <StyledPointsList>
+              {`${name}: `}
+              <StyledSeal>{points}</StyledSeal>
+            </StyledPointsList>
+          ))}
+      </TaskmasterTask>
       <FullWidthHR />
       <CovidDos />
       <FullWidthHR />

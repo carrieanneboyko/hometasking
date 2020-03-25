@@ -4,7 +4,8 @@ import { useRouter } from "next/router";
 import NoTaskYet from "./no-task-yet";
 import Task1 from "../../components/Tasks/Task1";
 import Task2 from "../../components/Tasks/Task2";
-
+import TaskNav from '../../components/Tasks/TaskNav';
+import FullWidthHR from '../../components/styled/FullWidthHR';
 import fetch from "isomorphic-unfetch";
 
 const SwitchTasks: React.FC<{ id: any; entries?: any }> = ({ id, entries }) => {
@@ -23,7 +24,11 @@ const SwitchTasks: React.FC<{ id: any; entries?: any }> = ({ id, entries }) => {
 const Tasks: NextPage<{ entries?: any }> = ({ entries }) => {
   const router = useRouter();
   const { id } = router.query;
-  return <SwitchTasks id={id} entries={entries} />;
+  return  <div>
+    <TaskNav/>
+    <FullWidthHR/>
+    <SwitchTasks id={id} entries={entries} />;
+  </div>
 };
 
 Tasks.getInitialProps = async function() {

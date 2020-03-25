@@ -51,7 +51,7 @@ const TaskList: React.FC<{}> = () => {
       <StyledTaskListFlex>
         <StyledTaskList>
           {taskList.map((task: TaskSummary) => (
-            <StyledTaskListLi>
+            <StyledTaskListLi key={task.url}>
               <a href={task.url}>
                 {task.number}: {task.description}
               </a>
