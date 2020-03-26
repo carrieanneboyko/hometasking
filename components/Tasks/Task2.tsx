@@ -7,6 +7,19 @@ import addHours from "date-fns/addHours";
 import FullWidthHR from "../styled/FullWidthHR";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 import Entries from "../Entries";
+import { task2Points } from "./points";
+
+const StyledPointsList = styled.div`
+  padding: 10px;
+`;
+const StyledSeal = styled.span`
+  padding: 5px;
+  margin: 5px;
+  border-radius: 50%;
+  color: white;
+
+  background-color: red;
+`;
 
 const MainStyle = styled.div`
   font-family: "Special Elite", Courier New, Courier, monospace;
@@ -42,7 +55,10 @@ const Tasks: React.FC<{ entries?: any }> = ({ entries }) => {
         isTaskmaster={true}
       ></VideoHolder>
       <TaskmasterTask>
-        <p>Turn your bathroom into the sort of venue you might visit for a great night out.</p>
+        <p>
+          Turn your bathroom into the sort of venue you might visit for a great
+          night out.
+        </p>
         <p>Best bathroom conversion wins.</p>
         <p>You have 30 hours.</p>
         <p>Your time starts now.</p>
@@ -52,8 +68,6 @@ const Tasks: React.FC<{ entries?: any }> = ({ entries }) => {
         startTime={new Date("March 25, 2020, 9:00 GMT")}
         endTime={addHours(new Date("March 25, 2020, 9:00 GMT"), 30)}
       />
-      {/* <TwitterTweetEmbed tweetId={`1242466255388336128`} /> */}
-
       <TaskmasterAddendum>
         <p>
           All tasks must be uploaded to Twitter with the hashtag "#HomeTasking"
@@ -63,7 +77,23 @@ const Tasks: React.FC<{ entries?: any }> = ({ entries }) => {
         <p>The Taskmaster's decision is final.</p>
       </TaskmasterAddendum>
       <FullWidthHR />
-      <CovidDos />
+      <TaskmasterH1>Results</TaskmasterH1>
+      <VideoHolder
+        src={`https://www.youtube.com/embed/7tKIKdHB06k`}
+        isTaskmaster={true}
+      ></VideoHolder>
+      <TaskmasterTask>
+        <p>Task #2 Points</p>
+        {Object.entries(task2Points)
+          .sort(([_nameA, pointsA], [_nameB, pointsB]) => pointsA - pointsB)
+          .map(([name, points]) => (
+            <StyledPointsList>
+              {`${name}: `}
+              <StyledSeal>{points}</StyledSeal>
+            </StyledPointsList>
+          ))}
+      </TaskmasterTask>
+      <FullWidthHR /> <CovidDos />
       <FullWidthHR />
       <Entries entries={entries} />
     </MainStyle>

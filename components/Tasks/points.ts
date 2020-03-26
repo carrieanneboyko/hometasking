@@ -14,6 +14,19 @@ export const task1Points: TaskPoints = {
   "@BenBackflip": 9,
   "@OldmanPlar": 10
 };
-const totalPoints: AllPoints = { task1Points };
+
+export const task2Points: TaskPoints = {
+  "@ashsollars": 1,
+  "@max_thomas18": 2,
+  "@aortakinda": 3,
+  "@petermcnasty": 4,
+  "@BenFerrariJ23": 5,
+  "@Tee_207": 6,
+  "@WaffelKopf": 7,
+  "@JGregly": 8,
+  "@DannyMunoir": 9,
+  "@MikeWHolder": 10
+};
+const totalPoints: AllPoints = { task1Points, task2Points };
 
 export default totalPoints;
