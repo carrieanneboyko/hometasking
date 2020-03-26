@@ -16,11 +16,11 @@ const StyledTimestamp = styled.div`
 const StyledCountdownFlex = styled.div`
   display: flex;
 `;
-const StyledCountdown = styled.div`
+const StyledCountdown = styled.div<{prep?: boolean}>`
   font-family: "Titillium Web", Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-size: 40px;
-  color: red;
+  color: ${({prep}) => prep ? `green` : `red`};
   background-color: black;
   border-radius: 5px;
   border: 0px solid transparent;
@@ -78,14 +78,21 @@ const msToDuration = (durationInMs: number) => {
 };
 
 const Timer: React.FC<TimerProps> = ({ startTime, endTime }) => {
-  const timeLeftInMs = (): number =>
-    differenceInMilliseconds(endTime, new Date());
+  const isPrep = new Date().valueOf() < startTime.valueOf();
+  const timeLeftInMs = (): number => {
+    if(isPrep){
+      return differenceInMilliseconds(startTime, new Date()); 
+    }
+    return differenceInMilliseconds(endTime, new Date());
+  }
+
+
   const [countDown, setCountdown] = useState<string>(
     msToDuration(timeLeftInMs())
   );
   const [expired, setExpired] = useState<boolean>(false);
   const handleCountdown = (timeLeft: number, clockInterval: number) => {
-    if (timeLeft <= 0) {
+    if (timeLeft <= 0 && !isPrep) {
       clearInterval(clockInterval);
       setExpired(true);
     } else {
@@ -106,7 +113,7 @@ const Timer: React.FC<TimerProps> = ({ startTime, endTime }) => {
         <StyledTimeExpired>Your time has expired.</StyledTimeExpired>
       ) : (
         <StyledCountdownFlex>
-          <StyledCountdown>{countDown}</StyledCountdown>
+          <StyledCountdown prep={isPrep}>{countDown}</StyledCountdown>
         </StyledCountdownFlex>
       )}
     </StyledTimer>

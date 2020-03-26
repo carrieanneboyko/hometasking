@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import NoTaskYet from "./no-task-yet";
 import Task1 from "../../components/Tasks/Task1";
 import Task2 from "../../components/Tasks/Task2";
+import Task3 from "../../components/Tasks/Task3";
+
 import TaskNav from '../../components/Tasks/TaskNav';
 import FullWidthHR from '../../components/styled/FullWidthHR';
 import fetch from "isomorphic-unfetch";
@@ -15,6 +17,8 @@ const SwitchTasks: React.FC<{ id: any; entries?: any }> = ({ id, entries }) => {
       return <Task1 entries={entries} />;
     case 2:
       return <Task2 entries={entries} />;
+    case 3: 
+      return <Task3 entries={entries} />
     case NaN:
     default:
       return <NoTaskYet id={id} />;

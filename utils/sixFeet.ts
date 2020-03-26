@@ -8,6 +8,7 @@ const sixFeetArray: string[] = [
   `0.8 times the width of those plastic sofas at the bowling alley`,
   `the size of a moose's antlers`,
   `2.3 adult cats (stretched)`,
+  `one Richard Osman`
 ]
 
 const sixFeet = (): string => {
