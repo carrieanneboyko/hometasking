@@ -16,21 +16,21 @@ interface TaskSummary {
 const taskList = [
   {
     number: "Task #1",
-    description: "Throw a piece of A4 Paper into the Bin",
+    description: "Throw a piece of A4 Paper into the Bin.",
     url: "/tasks/1",
     startTime: new Date("March 23, 2020, 9:00 GMT"),
     endTime: addHours(new Date("March 23, 2020, 9:00 GMT"), 30)
   },
   {
     number: "Task #2",
-    description: "Convert your bathroom into a nice venue",
+    description: "Convert your bathroom into a nice venue.",
     url: "/tasks/2",
     startTime: new Date("March 25, 2020, 9:00 GMT"),
     endTime: addHours(new Date("March 25, 2020, 9:00 GMT"), 30)
   },
   {
     number: "Task #3",
-    description: "TBD",
+    description: "Make the best dancing elephant.",
     url: "/tasks/3",
     startTime: new Date("March 27, 2020, 9:00 GMT"),
     endTime: addHours(new Date("March 27, 2020, 15:00 GMT"), 30)

@@ -50,12 +50,14 @@ const Tasks: React.FC<{ entries?: any }> = ({ entries }) => {
     <MainStyle>
       <TaskmasterH1>Task #3</TaskmasterH1>
       <FullWidthHR />
-      {/* <VideoHolder
-        src={`https://www.youtube.com/embed/7tJCKtyz47E`}
+      <VideoHolder
+        src={`https://www.youtube.com/embed/xvuLmf9QPS0`}
         isTaskmaster={true}
-      ></VideoHolder> */}
+      ></VideoHolder>
       <TaskmasterTask>
-        <p>This task has not yet been assigned. It will be available shortly.</p>
+        <p>Make the best dancing elephant.</p>
+        <p>You have six hours</p>
+        <p>Your time starts now</p>
         <FullWidthHR />
       </TaskmasterTask>
       <Timer
