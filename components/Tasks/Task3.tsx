@@ -72,6 +72,8 @@ const Tasks: React.FC<{ entries?: any }> = ({ entries }) => {
           to be considered.
         </p>
         <p>Please keep your clip under 20 seconds long.</p>
+        <p>Please film landscape mode/horizontal not portrait mode/vertical, if you are able.</p>
+
         <p>The Taskmaster's decision is final.</p>
       </TaskmasterAddendum>
       <FullWidthHR />
