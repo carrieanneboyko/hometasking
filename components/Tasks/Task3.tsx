@@ -7,7 +7,7 @@ import addHours from "date-fns/addHours";
 import FullWidthHR from "../styled/FullWidthHR";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 import Entries from "../Entries";
-import { task1Points } from "./points";
+import { task3Points } from "./points";
 
 const MainStyle = styled.div`
   font-family: "Special Elite", Courier New, Courier, monospace;
@@ -64,7 +64,6 @@ const Tasks: React.FC<{ entries?: any }> = ({ entries }) => {
         startTime={new Date("March 27, 2020, 9:00 GMT")}
         endTime={addHours(new Date("March 27, 2020, 9:00 GMT"), 6)}
       />
-      {/* <TwitterTweetEmbed tweetId={`1242466255388336128`} /> */}
 
       <TaskmasterAddendum>
         <p>
@@ -77,14 +76,14 @@ const Tasks: React.FC<{ entries?: any }> = ({ entries }) => {
         <p>The Taskmaster's decision is final.</p>
       </TaskmasterAddendum>
       <FullWidthHR />
-      {/* <TaskmasterH1>Results</TaskmasterH1>
+      <TaskmasterH1>Results</TaskmasterH1>
       <VideoHolder
-        src={`https://www.youtube.com/embed/z0-C5GH_yxU`}
+        src={`https://www.youtube.com/embed/v8y_tXnuCCw`}
         isTaskmaster={true}
       ></VideoHolder>
       <TaskmasterTask>
-        <p>Task #1 Points</p>
-        {Object.entries(task1Points)
+        <p>Task #3 Points</p>
+        {Object.entries(task3Points)
           .sort(([_nameA, pointsA], [_nameB, pointsB]) => pointsA - pointsB)
           .map(([name, points]) => (
             <StyledPointsList>
@@ -92,7 +91,7 @@ const Tasks: React.FC<{ entries?: any }> = ({ entries }) => {
               <StyledSeal>{points}</StyledSeal>
             </StyledPointsList>
           ))}
-      </TaskmasterTask> */}
+      </TaskmasterTask>
       <FullWidthHR />
       <CovidDos />
       <FullWidthHR />
