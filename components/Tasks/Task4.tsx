@@ -48,7 +48,7 @@ const StyledSeal = styled.span`
 const Tasks: React.FC<{}> = () => {
   return (
     <MainStyle>
-      <TaskmasterH1>Task #3</TaskmasterH1>
+      <TaskmasterH1>Task #4</TaskmasterH1>
       <FullWidthHR />
       <VideoHolder
         src={`https://www.youtube.com/embed/xnfSBFM3mvs`}
