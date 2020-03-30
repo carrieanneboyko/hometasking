@@ -6,7 +6,8 @@ import Timer from "../Timer";
 import addHours from "date-fns/addHours";
 import FullWidthHR from "../styled/FullWidthHR";
 import { TwitterTweetEmbed } from "react-twitter-embed";
-import { task1Points } from "./points";
+// import Entries from "../Entries";
+// import { task3Points } from "./points";
 
 const MainStyle = styled.div`
   font-family: "Special Elite", Courier New, Courier, monospace;
@@ -44,47 +45,48 @@ const StyledSeal = styled.span`
   background-color: red;
 `
 
-const Tasks: React.FC<{ entries?: any }> = ({ entries }) => {
+const Tasks: React.FC<{}> = () => {
   return (
     <MainStyle>
-      <TaskmasterH1>Task #1</TaskmasterH1>
+      <TaskmasterH1>Task #3</TaskmasterH1>
       <FullWidthHR />
       <VideoHolder
-        src={`https://www.youtube.com/embed/7tJCKtyz47E`}
+        src={`https://www.youtube.com/embed/xnfSBFM3mvs`}
         isTaskmaster={true}
       ></VideoHolder>
       <TaskmasterTask>
-        <p>Throw a piece of A4 paper into a bin.</p>
-        <p>Most spectacular throw wins.</p>
-        <p>One entry per household.</p>
-        <p>You have 30 hours.</p>
-        <p>Your time starts now.</p>
+        <p>Camouflage yourself, and then reveal yourself.</p>
+        <p>Please don't misinterpret "reveal yourself"</p>
+        <p>Best camouflage wins.</p>
+
+        <p>You have thirty hours</p>
+        <p>Your time starts now</p>
         <FullWidthHR />
-        <TwitterTweetEmbed tweetId={`1242073477659668483`} />
       </TaskmasterTask>
       <Timer
-        startTime={new Date("March 23, 2020, 9:00 GMT")}
-        endTime={addHours(new Date("March 23, 2020, 9:00 GMT"), 30)}
+        startTime={new Date("March 30, 2020, 9:00 GMT")}
+        endTime={addHours(new Date("March 30, 2020, 9:00 GMT"), 30)}
       />
-      <TwitterTweetEmbed tweetId={`1242466255388336128`} />
 
       <TaskmasterAddendum>
         <p>
           All tasks must be uploaded to Twitter with the hashtag "#HomeTasking"
           to be considered.
         </p>
-        <p>Please keep your clip under one minute long.</p>
+        <p>Please keep your clip under 20 seconds long.</p>
+        <p>Please film landscape mode/horizontal not portrait mode/vertical, if you are able.</p>
+
         <p>The Taskmaster's decision is final.</p>
       </TaskmasterAddendum>
       <FullWidthHR />
-      <TaskmasterH1>Results</TaskmasterH1>
+      {/* <TaskmasterH1>Results</TaskmasterH1>
       <VideoHolder
-        src={`https://www.youtube.com/embed/z0-C5GH_yxU`}
+        src={`https://www.youtube.com/embed/v8y_tXnuCCw`}
         isTaskmaster={true}
       ></VideoHolder>
       <TaskmasterTask>
-        <p>Task #1 Points</p>
-        {Object.entries(task1Points)
+        <p>Task #3 Points</p>
+        {Object.entries(task3Points)
           .sort(([_nameA, pointsA], [_nameB, pointsB]) => pointsA - pointsB)
           .map(([name, points]) => (
             <StyledPointsList>
@@ -93,7 +95,7 @@ const Tasks: React.FC<{ entries?: any }> = ({ entries }) => {
             </StyledPointsList>
           ))}
       </TaskmasterTask>
-      <FullWidthHR />
+      <FullWidthHR /> */}
       <CovidDos />
       <FullWidthHR />
     </MainStyle>

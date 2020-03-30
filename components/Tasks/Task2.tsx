@@ -45,7 +45,7 @@ const TaskmasterAddendum = styled.div`
   font-family: "Special Elite";
 `;
 
-const Tasks: React.FC<{ entries?: any }> = ({ entries }) => {
+const Tasks: React.FC<{}> = () => {
   return (
     <MainStyle>
       <TaskmasterH1>Task #2</TaskmasterH1>
@@ -95,7 +95,6 @@ const Tasks: React.FC<{ entries?: any }> = ({ entries }) => {
       </TaskmasterTask>
       <FullWidthHR /> <CovidDos />
       <FullWidthHR />
-      <Entries entries={entries} />
     </MainStyle>
   );
 };

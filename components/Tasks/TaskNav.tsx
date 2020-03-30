@@ -18,7 +18,7 @@ export const TaskNav = () => {
         <a href={`/`}>{`Hometasking Home`}</a>
         <span>&nbsp;|&nbsp;</span>
       </StyledIndividualTaskLink>
-      {[1, 2, 3].map((tasknum: number, index: number, arr: number[]) => (
+      {[1, 2, 3, 4].map((tasknum: number, index: number, arr: number[]) => (
         <StyledIndividualTaskLink key={`task-${tasknum}`}>
           <a href={`/tasks/${tasknum}`}>{`Task #${tasknum}`}</a>
           {index < arr.length - 1 && <span>&nbsp;|&nbsp;</span>}

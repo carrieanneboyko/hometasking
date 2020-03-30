@@ -45,7 +45,7 @@ const StyledSeal = styled.span`
   background-color: red;
 `
 
-const Tasks: React.FC<{ entries?: any }> = ({ entries }) => {
+const Tasks: React.FC<{}> = () => {
   return (
     <MainStyle>
       <TaskmasterH1>Task #3</TaskmasterH1>
