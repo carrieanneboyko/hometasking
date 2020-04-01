@@ -40,6 +40,19 @@ export const task3Points: TaskPoints = {
   "@colcolgan": 9,
   "@MuffettsM": 10
 };
-const totalPoints: AllPoints = { task1Points, task2Points, task3Points };
+
+export const task4Points: TaskPoints = {
+  "@GosdaTM": 1,
+  "@LucasSayers1": 2,
+  "@pelasun": 3,
+  "@clareymarey": 4,
+  "@Itzsaranewton": 5,
+  "@katewatson3231": 6,
+  "@LisaWoo89422": 7,
+  "@TaskmasterMad": 8,
+  "@MattyBoydMTB": 9,
+  "@lexy_simpson": 10
+};
+const totalPoints: AllPoints = { task1Points, task2Points, task3Points, task4Points };
 
 export default totalPoints;

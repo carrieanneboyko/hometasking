@@ -7,7 +7,7 @@ import addHours from "date-fns/addHours";
 import FullWidthHR from "../styled/FullWidthHR";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 // import Entries from "../Entries";
-import { task4Points } from "./points";
+// import { task5Points } from "./points";
 
 const MainStyle = styled.div`
   font-family: "Special Elite", Courier New, Courier, monospace;
@@ -48,24 +48,24 @@ const StyledSeal = styled.span`
 const Tasks: React.FC<{}> = () => {
   return (
     <MainStyle>
-      <TaskmasterH1>Task #4</TaskmasterH1>
+      <TaskmasterH1>Task #5</TaskmasterH1>
       <FullWidthHR />
       <VideoHolder
-        src={`https://www.youtube.com/embed/xnfSBFM3mvs`}
+        src={`https://www.youtube.com/embed/F7dZH5aSKr0`}
         isTaskmaster={true}
       ></VideoHolder>
       <TaskmasterTask>
-        <p>Camouflage yourself, and then reveal yourself.</p>
-        <p>Please don't misinterpret "reveal yourself"</p>
-        <p>Best camouflage wins.</p>
+        <p>Turn your kitchen into a sporting arena,</p>
+        <p>and create the most epic moment of sporting glory,</p>
+        <p>in the kitchen.</p>
 
         <p>You have thirty hours</p>
         <p>Your time starts now</p>
         <FullWidthHR />
       </TaskmasterTask>
       <Timer
-        startTime={new Date("March 30, 2020, 9:00 GMT")}
-        endTime={addHours(new Date("March 30, 2020, 9:00 GMT"), 30)}
+        startTime={new Date("April 1, 2020, 9:00 GMT+1")}
+        endTime={addHours(new Date("April 1, 2020, 9:00 GMT+1"), 30)}
       />
 
       <TaskmasterAddendum>
@@ -79,14 +79,14 @@ const Tasks: React.FC<{}> = () => {
         <p>The Taskmaster's decision is final.</p>
       </TaskmasterAddendum>
       <FullWidthHR />
-      <TaskmasterH1>Results</TaskmasterH1>
+      {/* <TaskmasterH1>Results</TaskmasterH1>
       <VideoHolder
         src={`https://www.youtube.com/embed/zB7eDHrf9hg`}
         isTaskmaster={true}
       ></VideoHolder>
       <TaskmasterTask>
-        <p>Task #4 Points</p>
-        {Object.entries(task4Points)
+        <p>Task #5 Points</p>
+        {Object.entries(task5Points)
           .sort(([_nameA, pointsA], [_nameB, pointsB]) => pointsA - pointsB)
           .map(([name, points]) => (
             <StyledPointsList>
@@ -95,7 +95,7 @@ const Tasks: React.FC<{}> = () => {
             </StyledPointsList>
           ))}
       </TaskmasterTask>
-      <FullWidthHR />
+      <FullWidthHR /> */}
       <CovidDos />
       <FullWidthHR />
     </MainStyle>
