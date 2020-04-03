@@ -7,7 +7,7 @@ import addHours from "date-fns/addHours";
 import FullWidthHR from "../styled/FullWidthHR";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 // import Entries from "../Entries";
-// import { task5Points } from "./points";
+import { task5Points } from "./points";
 
 const MainStyle = styled.div`
   font-family: "Special Elite", Courier New, Courier, monospace;
@@ -79,9 +79,9 @@ const Tasks: React.FC<{}> = () => {
         <p>The Taskmaster's decision is final.</p>
       </TaskmasterAddendum>
       <FullWidthHR />
-      {/* <TaskmasterH1>Results</TaskmasterH1>
+      <TaskmasterH1>Results</TaskmasterH1>
       <VideoHolder
-        src={`https://www.youtube.com/embed/zB7eDHrf9hg`}
+        src={`https://www.youtube.com/embed/pfR6cOTMM-o`}
         isTaskmaster={true}
       ></VideoHolder>
       <TaskmasterTask>
@@ -95,7 +95,7 @@ const Tasks: React.FC<{}> = () => {
             </StyledPointsList>
           ))}
       </TaskmasterTask>
-      <FullWidthHR /> */}
+      <FullWidthHR />
       <CovidDos />
       <FullWidthHR />
     </MainStyle>

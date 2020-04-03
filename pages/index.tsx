@@ -30,20 +30,20 @@ const HomeTaskingIntro: React.FC<{}> = () => (
 );
 
 const positionFinder = (n: number): string => {
-  if([11, 12, 13].includes(n % 100)){
-    return `${n}th`
+  if ([11, 12, 13].includes(n % 100)) {
+    return `${n}th`;
   }
-  if(n % 10 === 1){
+  if (n % 10 === 1) {
     return `${n}st`;
   }
-  if(n % 10 === 2){
-    return `${n}nd`
+  if (n % 10 === 2) {
+    return `${n}nd`;
   }
-  if(n % 10 === 3){
-    return `${n}rd`
+  if (n % 10 === 3) {
+    return `${n}rd`;
   }
-  return `${n}th`
-}
+  return `${n}th`;
+};
 
 const TaskPointsContainer = styled.div`
   font-family: "Special Elite";
@@ -70,10 +70,16 @@ const StyledSeal = styled.span`
 const StyledClickable = styled.a`
   text-decoration: underline;
   color: blue;
-`
+`;
 const IndexPage: React.FC<{}> = () => {
   const [isLeaderboardFull, setLeaderboardFull] = useState<boolean>(false);
+  const [isLeaderboardAlphabetical, setLeaderboardAlphabetical] = useState<
+    boolean
+  >(false);
   const toggleFullLeaderboard = () => setLeaderboardFull(!isLeaderboardFull);
+  const toggleAlphabetical = () =>
+    setLeaderboardAlphabetical(!isLeaderboardAlphabetical);
+  const sortByName = isLeaderboardAlphabetical && isLeaderboardFull;
   const reducedPoints = Object.values(totalPoints).reduce((pv, cv) => {
     for (let key in cv) {
       if (!pv[key]) {
@@ -110,13 +116,36 @@ const IndexPage: React.FC<{}> = () => {
       <FullWidthHR />
 
       <TaskPointsContainer>
-          <p>{isLeaderboardFull ? 'Full Leaderboards' : 'Leaderboards (Top Ten)'}</p>
+        <p>
+          {isLeaderboardFull ? "Full Leaderboards" : "Leaderboards (Top Ten)"}
+        </p>
+        {isLeaderboardFull ? (
+          <StyledClickable onClick={toggleAlphabetical}>
+            {isLeaderboardAlphabetical
+              ? "Sort Leaderboard by Points"
+              : "Sort Leaderboard Alphabetically"}
+          </StyledClickable>
+        ) : null}
         {Object.entries(reducedPoints)
-          .sort(([_nameA, pointsA], [_nameB, pointsB]) => pointsB - pointsA)
-          .slice(0, isLeaderboardFull ? Object.entries(reducedPoints).length : 10)
+          .sort(([nameA, pointsA], [nameB, pointsB]) => {
+            if (!sortByName) {
+              return pointsB - pointsA;
+            } else if (nameA.toLowerCase() < nameB.toLowerCase()) {
+              return -1;
+            } else if (nameA.toLowerCase() > nameB.toLowerCase()) {
+              return 1;
+            }
+            return 0;
+          })
+          .slice(
+            0,
+            isLeaderboardFull ? Object.entries(reducedPoints).length : 10
+          )
           .map(([name, points], index: number) => (
             <StyledPointsList key={name}>
-              {`${positionFinder(index + 1)} - ${name}: `}
+              {sortByName
+                ? `${name}: `
+                : `${positionFinder(index + 1)} - ${name}: `}
               <StyledSeal>{points}</StyledSeal>
             </StyledPointsList>
           ))}
