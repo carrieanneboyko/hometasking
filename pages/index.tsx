@@ -6,6 +6,10 @@ import VideoHolder from "../components/VideoHolder";
 import TaskList from "../components/Tasks/TaskList";
 import FullWidthHR from "../components/styled/FullWidthHR";
 import totalPoints from "../components/Tasks/points";
+
+import taskList, {Task} from '../components/Tasks/data';
+
+
 const MainStyle = styled.div`
   font-family: "Special Elite", Courier New, Courier, monospace;
   text-align: center;
@@ -80,7 +84,7 @@ const IndexPage: React.FC<{}> = () => {
   const toggleAlphabetical = () =>
     setLeaderboardAlphabetical(!isLeaderboardAlphabetical);
   const sortByName = isLeaderboardAlphabetical && isLeaderboardFull;
-  const reducedPoints = Object.values(totalPoints).reduce((pv, cv) => {
+  const reducedPoints = Object.values(taskList.map((t: Task) => t.points)).reduce((pv, cv) => {
     for (let key in cv) {
       if (!pv[key]) {
         pv[key] = cv[key];
@@ -92,22 +96,6 @@ const IndexPage: React.FC<{}> = () => {
   }, {});
   return (
     <MainStyle>
-      <NotTaskStyle>
-        <div>
-          Please forgive this very work in progress page. I'm kinda building
-          this page as time allows (and working a full-time job as well -- from
-          home, naturally.)
-        </div>
-        <div>Sincerely,</div>
-        <div>
-          The Taskmaster('s Assistant('s Assistant))<sup>*</sup>
-        </div>
-        <div>
-          <sup>*</sup>
-          <em>self-appointed</em>
-        </div>
-      </NotTaskStyle>
-      <FullWidthHR />
       <TimeStartsNow />
       <HomeTaskingIntro />
       <FullWidthHR />
