@@ -114,7 +114,9 @@ const IndexPage: React.FC<{}> = () => {
 
       <TaskList />
       <FullWidthHR />
-
+            <StyledClickable href="https://docs.google.com/spreadsheets/d/1VvOh2ruA75sLL9DoDrZO28BYEcUTo9b3CykDjFm74cM/edit#gid=0" target="_blank">
+              @JennyThyer's Full Results Spreadsheet
+            </StyledClickable>
       <TaskPointsContainer>
         <p>
           {isLeaderboardFull ? "Full Leaderboards" : "Leaderboards (Top Ten)"}
