@@ -87,7 +87,7 @@ const TaskTemplate: React.FC<{ task: Task; index: number }> = ({ task, index }) 
             {Object.entries(task.points)
               .sort(([_nameA, pointsA], [_nameB, pointsB]) => pointsA - pointsB)
               .map(([name, points]) => (
-                <StyledPointsList>
+                <StyledPointsList key={name}>
                   {`${name}: `}
                   <StyledSeal>{points}</StyledSeal>
                 </StyledPointsList>
