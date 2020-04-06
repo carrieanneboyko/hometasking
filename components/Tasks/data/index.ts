@@ -154,6 +154,20 @@ export const taskList: Task[] = [
       `You have thirty hours`,
       `Your time starts now`
     ]
+  },
+  {
+    number: "Task #6",
+    description: "Do the most extraordinary thing with a pair of trousers.",
+    url: "/tasks/6",
+    startTime: new Date("April 6, 2020, 9:00 GMT+1"),
+    endTime: addHours(new Date("April 6, 2020, 15:00 GMT+1"), 30),
+    announcement: `F7dZH5aSKr0`,
+    fullTask: [
+      `Do something extraordinary with a pair of trousers.`,
+      `Most extraordinary thing done with a pair of trousers wins.`,
+      `You have thirty hours.`,
+      `Your time starts now.`,
+    ]
   }
 ];
 
