@@ -167,7 +167,20 @@ export const taskList: Task[] = [
       `Most extraordinary thing done with a pair of trousers wins.`,
       `You have thirty hours.`,
       `Your time starts now.`,
-    ]
+    ],
+    results: `ZcUP8jNBRRM`,
+    points: {
+      "@MrsWillisY3": 1,
+      "@jamdow71": 2,
+      "@theadamwalton": 3,
+      "@santry79": 4,
+      "@sandyharlel": 5,
+      "@makerofcarts": 6,
+      "@ben_mccluskey": 7,
+      "@Louisa_Wenham": 8,
+      "@103Trains": 9,
+      "@ryan_will_jack": 10
+    },
   }
 ];
 
