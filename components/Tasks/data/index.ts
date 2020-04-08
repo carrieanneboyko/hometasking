@@ -13,7 +13,7 @@ export interface Task {
   announcement: string;
   results?: string;
   fullTask: string[];
-  points?: Record<string, number>
+  points?: Record<string, number>;
 }
 
 export const taskList: Task[] = [
@@ -166,7 +166,7 @@ export const taskList: Task[] = [
       `Do something extraordinary with a pair of trousers.`,
       `Most extraordinary thing done with a pair of trousers wins.`,
       `You have thirty hours.`,
-      `Your time starts now.`,
+      `Your time starts now.`
     ],
     results: `ZcUP8jNBRRM`,
     points: {
@@ -180,7 +180,36 @@ export const taskList: Task[] = [
       "@Louisa_Wenham": 8,
       "@103Trains": 9,
       "@ryan_will_jack": 10
-    },
+    }
+  },
+  {
+    number: "Task #7",
+    description: "Silently recreate an iconic movie moment.",
+    url: "/tasks/7",
+    startTime: new Date("April 8, 2020, 9:00 GMT+1"),
+    endTime: addHours(new Date("April 8, 2020, 15:00 GMT+1"), 30),
+    announcement: `osC8y0PBgUM`,
+    fullTask: [
+      `Silently recreate an iconic movie moment.`,
+      `You may NOT use stop motion or computer animation.`,
+      `Most ambitious, and enjoyable, silent,`,
+      `recognisable movie-moment re-enactment wins.`,
+      `You have thirty hours`,
+      `Your time starts now`
+    ]
+    // results: `ZcUP8jNBRRM`,
+    // points: {
+    //   "@MrsWillisY3": 1,
+    //   "@jamdow71": 2,
+    //   "@theadamwalton": 3,
+    //   "@santry79": 4,
+    //   "@sandyharlel": 5,
+    //   "@makerofcarts": 6,
+    //   "@ben_mccluskey": 7,
+    //   "@Louisa_Wenham": 8,
+    //   "@103Trains": 9,
+    //   "@ryan_will_jack": 10
+    // },
   }
 ];
 
