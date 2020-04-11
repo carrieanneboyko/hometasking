@@ -1,12 +1,12 @@
 import Document, { Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
-import React, { ReactElement } from "react";
+import React from "react";
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
     // Returns an object like: { html, head, errorHtml, chunks, styles }
     const sheet = new ServerStyleSheet();
-    const page = renderPage((App: any) => (props: any): ReactElement =>
+    const page = renderPage(App => props =>
       sheet.collectStyles(<App {...props} />)
     );
     const styleTags = sheet.getStyleElement();
@@ -19,9 +19,9 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <link
-            href="https://fonts.googleapis.com/css?family=Oxanium:700|Special+Elite&display=swap"
+            href="https://fonts.googleapis.com/css?family=Special+Elite|Titillium+Web:700&display=swap"
             rel="stylesheet"
-          />
+          ></link>
         </Head>
         <body>
           <Main />

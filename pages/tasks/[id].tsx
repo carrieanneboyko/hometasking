@@ -1,14 +1,21 @@
 import React from "react";
-import TimeStartsNow from "../../components/TimeStartsNow";
+import { NextPage } from "next";
 import { useRouter } from "next/router";
+import NoTaskYet from "./no-task-yet";
+import TaskTemplate from "../../components/Tasks/TaskTemplate";
+import TaskNav from "../../components/Tasks/TaskNav";
+import FullWidthHR from "../../components/styled/FullWidthHR";
+import taskList from "../../components/Tasks/data/index";
 
-const Tasks: React.FC<{}> = () => {
+const Tasks: NextPage<{ entries?: any }> = ({ entries }) => {
   const router = useRouter();
   const { id } = router.query;
+  const taskIndex = parseInt(id as string, 10) - 1;
   return (
     <div>
-      <TimeStartsNow />
-      <div>{id}</div>
+      <TaskNav />
+      <FullWidthHR />
+      <TaskTemplate task={taskList[taskIndex]} index={taskIndex} />;
     </div>
   );
 };
