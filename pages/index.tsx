@@ -91,10 +91,6 @@ const IndexPage: NextPage<{
 
   return (
     <MainStyle>
-      <div style={{ color: "red", fontSize: "20px" }}>
-        Please bear with us as we move to an automated system. Results are not
-        accurate.
-      </div>
       <TimeStartsNow />
       <HomeTaskingIntro />
       <FullWidthHR />
