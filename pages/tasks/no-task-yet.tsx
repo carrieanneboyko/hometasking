@@ -4,8 +4,8 @@ import styled from "styled-components";
 const StyledCentered = styled.div`
   text-align: center;
   margin: auto;
-  width: 90%; 
-`
+  width: 90%;
+`;
 const TaskmasterH1 = styled.h1`
   font-family: "Special Elite";
 `;
@@ -13,11 +13,11 @@ const TaskmasterH1 = styled.h1`
 const TaskmasterType = styled.div`
   font-family: "Special Elite", Courier New, Courier, monospace;
 `;
-const NoTaskYet: React.FC<{ id: number }> = ({ id }) => (
+const NoTaskYet: React.FC<{}> = () => (
   <StyledCentered>
     <TaskmasterH1>Your time does not start now.</TaskmasterH1>
-    <TaskmasterType>{`Sorry. Task #${id} has not yet been assigned by the Taskmaster.`}</TaskmasterType>
-    <img src="/img/taskmaster-seal.png"/>
+    <TaskmasterType>{`Sorry. This task has not yet been assigned by the Taskmaster.`}</TaskmasterType>
+    <img src="/img/taskmaster-seal.png" />
   </StyledCentered>
 );
 

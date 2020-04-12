@@ -2,15 +2,19 @@ import React from "react";
 import TaskTemplate from "../Tasks/TaskTemplate";
 import TaskNav from "../Tasks/TaskNav";
 import FullWidthHR from "../styled/FullWidthHR";
-import taskList from "../Tasks/data/index";
+import { Task } from "../Tasks/data/index";
 
-export const TaskEntryPage: React.FC<{ id: number }> = ({ id }) => {
+export const TaskEntryPage: React.FC<{ id: number; taskData: Task }> = ({
+  id,
+  taskData
+}) => {
   const taskIndex = id - 1;
+
   return (
     <div>
       <TaskNav />
       <FullWidthHR />
-      <TaskTemplate task={taskList[taskIndex]} index={taskIndex} />;
+      <TaskTemplate task={taskData} index={taskIndex} />;
     </div>
   );
 };

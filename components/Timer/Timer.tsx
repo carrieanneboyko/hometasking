@@ -43,8 +43,8 @@ const TIME = {
 };
 
 interface TimerProps {
-  startTime: Date;
-  endTime: Date;
+  startTime: Date | string;
+  endTime: Date | string;
 }
 
 const timeToEnglish = (time: Date): string =>
@@ -78,12 +78,16 @@ const msToDuration = (durationInMs: number) => {
 };
 
 const Timer: React.FC<TimerProps> = ({ startTime, endTime }) => {
-  const isPrep = new Date().valueOf() < startTime.valueOf();
+  const sTime: Date =
+    startTime instanceof Date ? startTime : new Date(startTime);
+  const eTime: Date = endTime instanceof Date ? endTime : new Date(endTime);
+
+  const isPrep = new Date().valueOf() < sTime.valueOf();
   const timeLeftInMs = (): number => {
     if (isPrep) {
-      return differenceInMilliseconds(startTime, new Date());
+      return differenceInMilliseconds(sTime, new Date());
     }
-    return differenceInMilliseconds(endTime, new Date());
+    return differenceInMilliseconds(eTime, new Date());
   };
 
   const [countDown, setCountdown] = useState<string>(
@@ -106,8 +110,8 @@ const Timer: React.FC<TimerProps> = ({ startTime, endTime }) => {
   }, [startTime, endTime]);
   return (
     <StyledTimer>
-      <StyledTimestamp>{`Start: ${timeToEnglish(startTime)}`}</StyledTimestamp>
-      <StyledTimestamp>{`End: ${timeToEnglish(endTime)}`}</StyledTimestamp>
+      <StyledTimestamp>{`Start: ${timeToEnglish(sTime)}`}</StyledTimestamp>
+      <StyledTimestamp>{`End: ${timeToEnglish(eTime)}`}</StyledTimestamp>
       {expired ? (
         <StyledTimeExpired>Your time has expired.</StyledTimeExpired>
       ) : (

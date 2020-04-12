@@ -5,10 +5,8 @@ import CovidDos from "../components/CovidDos";
 import VideoHolder from "../components/VideoHolder";
 import TaskList from "../components/Tasks/TaskList";
 import FullWidthHR from "../components/styled/FullWidthHR";
-import totalPoints from "../components/Tasks/points";
-
-import taskList, {Task} from '../components/Tasks/data';
-
+import pointsDb from "../db/Points";
+import { NextPage, GetServerSideProps } from "next";
 
 const MainStyle = styled.div`
   font-family: "Special Elite", Courier New, Courier, monospace;
@@ -75,7 +73,9 @@ const StyledClickable = styled.a`
   text-decoration: underline;
   color: blue;
 `;
-const IndexPage: React.FC<{}> = () => {
+const IndexPage: NextPage<{ leaderboard: Record<string, number> }> = ({
+  leaderboard
+}) => {
   const [isLeaderboardFull, setLeaderboardFull] = useState<boolean>(false);
   const [isLeaderboardAlphabetical, setLeaderboardAlphabetical] = useState<
     boolean
@@ -84,27 +84,25 @@ const IndexPage: React.FC<{}> = () => {
   const toggleAlphabetical = () =>
     setLeaderboardAlphabetical(!isLeaderboardAlphabetical);
   const sortByName = isLeaderboardAlphabetical && isLeaderboardFull;
-  const reducedPoints = Object.values(taskList.map((t: Task) => t.points)).reduce((pv, cv) => {
-    for (let key in cv) {
-      if (!pv[key]) {
-        pv[key] = cv[key];
-      } else {
-        pv[key] += cv[key];
-      }
-    }
-    return pv;
-  }, {});
+
   return (
     <MainStyle>
+      <div style={{ color: "red", fontSize: "20px" }}>
+        Please bear with us as we move to an automated system. Results are not
+        accurate.
+      </div>
       <TimeStartsNow />
       <HomeTaskingIntro />
       <FullWidthHR />
 
       <TaskList />
       <FullWidthHR />
-            <StyledClickable href="https://docs.google.com/spreadsheets/d/1VvOh2ruA75sLL9DoDrZO28BYEcUTo9b3CykDjFm74cM/edit#gid=0" target="_blank">
-              @JennyThyer's Full Results Spreadsheet
-            </StyledClickable>
+      <StyledClickable
+        href="https://docs.google.com/spreadsheets/d/1VvOh2ruA75sLL9DoDrZO28BYEcUTo9b3CykDjFm74cM/edit#gid=0"
+        target="_blank"
+      >
+        @JennyThyer's Full Results Spreadsheet
+      </StyledClickable>
       <TaskPointsContainer>
         <p>
           {isLeaderboardFull ? "Full Leaderboards" : "Leaderboards (Top Ten)"}
@@ -116,7 +114,7 @@ const IndexPage: React.FC<{}> = () => {
               : "Sort Leaderboard Alphabetically"}
           </StyledClickable>
         ) : null}
-        {Object.entries(reducedPoints)
+        {Object.entries(leaderboard)
           .sort(([nameA, pointsA], [nameB, pointsB]) => {
             if (!sortByName) {
               return pointsB - pointsA;
@@ -127,10 +125,7 @@ const IndexPage: React.FC<{}> = () => {
             }
             return 0;
           })
-          .slice(
-            0,
-            isLeaderboardFull ? Object.entries(reducedPoints).length : 10
-          )
+          .slice(0, isLeaderboardFull ? Object.entries(leaderboard).length : 10)
           .map(([name, points], index: number) => (
             <StyledPointsList key={name}>
               {sortByName
@@ -151,6 +146,13 @@ const IndexPage: React.FC<{}> = () => {
       <WashHands />
     </MainStyle>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { getAllPoints } = pointsDb("hometasking", "tasks");
+  const leaderboard = await getAllPoints();
+
+  return { props: { leaderboard } };
 };
 
 export default IndexPage;

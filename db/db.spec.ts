@@ -1,5 +1,6 @@
 import connect from "./connect";
 import Tasks from "./Tasks";
+import Points from "./Points";
 import { InsertOneWriteOpResult } from "mongodb";
 import { addHours } from "date-fns";
 
@@ -91,10 +92,7 @@ describe("Tasks", () => {
   beforeAll(async () => {
     const db = await connect();
     try {
-      await db
-        .db("hometasking-test")
-        .collection("tasks")
-        .drop();
+      await db.db("hometasking-test").collection("tasks").drop();
     } catch (err) {
       console.warn(err);
       return;
@@ -151,6 +149,47 @@ describe("Tasks", () => {
       results: "z0-C5GH_yxU",
       startTime: new Date(`2020-03-23T09:00:00.000Z`),
       url: "/tasks/1"
+    });
+  });
+});
+
+describe("Poitns", () => {
+  beforeAll(async () => {
+    const db = await connect();
+    try {
+      await db.db("hometasking-test").collection("tasks").drop();
+    } catch (err) {
+      console.warn(err);
+      return;
+    }
+  });
+  it("getsAllPoints", async () => {
+    const { addTask } = Tasks("hometasking-test", "tasks");
+    await addTask(testTask);
+    await addTask({ ...testTask2Before, ...testTask2After });
+    const { getAllPoints } = Points("hometasking-test", "tasks");
+    const res = await getAllPoints();
+    expect(res).toEqual({
+      "@stephkle": 1,
+      "@tylernilson8": 2,
+      "@Chipfork42": 3,
+      "@EquiumFox": 4,
+      "@NayGHutch": 5,
+      "@CrispyMcHenry": 6,
+      "@MeistersTask": 7,
+      "@SanneSofieee": 8,
+      "@BenBackflip": 9,
+      "@OldmanPlar": 10,
+      "@ashsollars": 1,
+      "@max_thomas18": 2,
+      "@aortakinda": 3,
+      "@petermcnasty": 4,
+      "@BenFerrariJ23": 5,
+      "@Tee_207": 6,
+      "@WaffelKopf": 7,
+      "@JGregly": 8,
+      "@DannyMunoir": 9,
+      "@MikeWHolder": 10
     });
   });
 });
