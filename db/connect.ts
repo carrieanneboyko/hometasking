@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const URL = process.env.MONGODB_URI;
+const URL = process.env.MONGOLAB_URI;
 const DB_NAME = process.env.DB_NAME;
 
 const connect = (): Promise<any> =>
