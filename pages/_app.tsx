@@ -11,15 +11,12 @@ export default class MyApp extends App {
       pageProps = await Component.getInitialProps(ctx);
     }
 
-    console.log({ pageProps });
-
     return { pageProps };
   }
 
   render() {
     const { Component, pageProps, router } = this.props;
     const onRedirectCallback = appState => {
-      console.log("appState", appState);
       router.push(appState && appState.targetUrl ? appState.targetUrl : "/");
     };
     return (

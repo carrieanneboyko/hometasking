@@ -13,19 +13,25 @@ const StyledIndividualTaskLink = styled.div`
   font-family: "Special Elite", Courier New, Courier, monospace;
 `;
 
-export const TaskNav = () => {
+export const TaskNav: React.FC<{
+  taskDescriptions: Array<{ id: number; description: string }>;
+}> = ({ taskDescriptions }) => {
   return (
     <StyledTaskNav>
       <StyledIndividualTaskLink>
         <a href={`/`}>{`Hometasking Home`}</a>
         <span>&nbsp;|&nbsp;</span>
       </StyledIndividualTaskLink>
-      {taskList.map((_t: Task, index: number) => (
-        <StyledIndividualTaskLink key={`task-${index + 1}`}>
-          <a href={`/tasks/${index + 1}`}>{`Task #${index + 1}`}</a>
-          {index < taskList.length - 1 && <span>&nbsp;|&nbsp;</span>}
-        </StyledIndividualTaskLink>
-      ))}
+      {taskDescriptions
+        .sort((t1, t2) => t1.id - t2.id)
+        .map(t => {
+          return (
+            <StyledIndividualTaskLink key={`task-${t.id}`}>
+              <a href={`/tasks/${t.id}`}>{`Task #${t.id}`}</a>
+              {t.id < taskDescriptions.length && <span>&nbsp;|&nbsp;</span>}
+            </StyledIndividualTaskLink>
+          );
+        })}
     </StyledTaskNav>
   );
 };

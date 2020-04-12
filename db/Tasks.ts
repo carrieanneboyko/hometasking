@@ -1,5 +1,6 @@
 import connect from "./connect";
 import { Task } from "../components/Tasks/data";
+import pick from "lodash/pick";
 
 const Tasks = (collection: string) => {
   const getTaskById = async (taskId: number) => {
@@ -19,7 +20,7 @@ const Tasks = (collection: string) => {
       .project({ description: 1, id: 1 })
       .toArray();
     dbClose();
-    return res;
+    return res.map(entry => pick(entry, ["id", "description"]));
   };
   const addTask = async (taskInfo: Partial<Task>) => {
     const { db, dbClose } = await connect();

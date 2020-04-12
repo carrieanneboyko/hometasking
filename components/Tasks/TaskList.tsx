@@ -39,7 +39,7 @@ const TaskList: React.FC<{
         <StyledTaskList>
           {taskDescriptions.map(({ id, description }) => (
             <StyledTaskListLi key={description}>
-              <a href={`Tasks/${id}`}>
+              <a href={`tasks/${id}`}>
                 {`Task #${id}`}: {description}
               </a>
             </StyledTaskListLi>

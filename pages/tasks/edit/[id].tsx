@@ -203,7 +203,6 @@ const EditTask: NextPage<{ taskData?: Partial<Task> }> = ({ taskData }) => {
     setLoadingStatus("loading");
     try {
       const res = await axios.post("/api/tasks", workingData);
-      console.log("res", { res });
       setLoadingStatus(`saved at ${new Date().toLocaleString()}`);
     } catch (err) {
       console.error(err);
