@@ -1,15 +1,11 @@
 import connect from "./connect";
 
-const Points = (providedDbName: string, collection: string) => {
-  const dbName: string =
-    process.env.NODE_ENV === "production"
-      ? process.env.DB_NAME
-      : providedDbName;
+const Points = (collection: string) => {
   const getAllPoints = async () => {
-    const db = await connect();
-    const cursor = db.db(dbName).collection(collection);
+    const { db, dbClose } = await connect();
+    const cursor = db.collection(collection);
     const res = await cursor.find({}).project({ points: 1 }).toArray();
-    db.close();
+    dbClose();
     return res
       .map(entry => entry.points)
       .reduce((pointList, currentPoints) => {

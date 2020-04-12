@@ -92,20 +92,20 @@ describe("Tasks", () => {
   beforeAll(async () => {
     const db = await connect();
     try {
-      await db.db("hometasking-test").collection("tasks").drop();
+      await db.db("hometasking-test").collection("tasks-test").drop();
     } catch (err) {
       console.warn(err);
       return;
     }
   });
   it("adds a full task", async () => {
-    const { addTask } = Tasks("hometasking-test", "tasks");
+    const { addTask } = Tasks("tasks-test");
     const res = await addTask(testTask);
     const mongoId = res._id;
     expect(res).toEqual({ ...testTask, _id: mongoId });
   });
   it("adds a partial task, then completes", async () => {
-    const { addTask } = Tasks("hometasking-test", "tasks");
+    const { addTask } = Tasks("tasks-test");
 
     const res = await addTask(testTask2Before);
     const mongoId = res._id;
@@ -118,7 +118,7 @@ describe("Tasks", () => {
     });
   });
   it("retrieves a task by id", async () => {
-    const { getTaskById } = Tasks("hometasking-test", "tasks");
+    const { getTaskById } = Tasks("tasks-test");
     const res = await getTaskById(testTask.id);
     expect(res).toEqual({
       _id: res._id,
@@ -157,17 +157,17 @@ describe("Poitns", () => {
   beforeAll(async () => {
     const db = await connect();
     try {
-      await db.db("hometasking-test").collection("tasks").drop();
+      await db.db("hometasking-test").collection("tasks-test").drop();
     } catch (err) {
       console.warn(err);
       return;
     }
   });
   it("getsAllPoints", async () => {
-    const { addTask } = Tasks("hometasking-test", "tasks");
+    const { addTask } = Tasks("tasks-test");
     await addTask(testTask);
     await addTask({ ...testTask2Before, ...testTask2After });
-    const { getAllPoints } = Points("hometasking-test", "tasks");
+    const { getAllPoints } = Points("tasks-test");
     const res = await getAllPoints();
     expect(res).toEqual({
       "@stephkle": 1,

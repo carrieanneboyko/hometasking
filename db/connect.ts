@@ -1,15 +1,15 @@
 import { MongoClient } from "mongodb";
 
 const URL = process.env.MONGODB_URI;
+const DB_NAME = process.env.DB_NAME;
 
-const connect = (): Promise<MongoClient> =>
+const connect = (): Promise<any> =>
   new Promise((resolve, reject) => {
-    console.log("URL!", URL);
-    MongoClient.connect(URL, (err, db: MongoClient) => {
+    MongoClient.connect(URL, (err, client: MongoClient) => {
       if (err) {
         reject(err);
       }
-      resolve(db);
+      resolve({ dbClose: () => client.close(), db: client.db(DB_NAME) });
     });
   });
 

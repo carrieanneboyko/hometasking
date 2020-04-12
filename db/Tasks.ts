@@ -1,23 +1,19 @@
 import connect from "./connect";
 import { Task } from "../components/Tasks/data";
 
-const Tasks = (providedDbName: string, collection: string) => {
-  const dbName: string =
-    process.env.NODE_ENV === "production"
-      ? process.env.DB_NAME
-      : providedDbName;
+const Tasks = (collection: string) => {
   const getTaskById = async (taskId: number) => {
-    const db = await connect();
+    const { db, dbClose } = await connect();
 
-    const cursor = db.db(dbName).collection(collection);
+    const cursor = db.collection(collection);
     const res = await cursor.findOne({ id: taskId });
-    db.close();
+    dbClose();
     return res;
   };
 
   const addTask = async (taskInfo: Partial<Task>) => {
-    const db = await connect();
-    const cursor = db.db(dbName).collection(collection);
+    const { db, dbClose } = await connect();
+    const cursor = db.collection(collection);
     const res = await cursor.findOneAndUpdate(
       { id: taskInfo.id },
       { $set: taskInfo },
@@ -26,7 +22,7 @@ const Tasks = (providedDbName: string, collection: string) => {
         returnOriginal: false
       }
     );
-    db.close();
+    dbClose();
     if (res.ok !== 1) {
       throw new Error(JSON.stringify(res));
     }
