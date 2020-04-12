@@ -14,23 +14,24 @@ const Tasks: NextPage<{
 }> = ({ taskData, taskDescriptions }) => {
   const router = useRouter();
   const { id } = router.query;
-  return (
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      router.push("/no-task-yet");
+    }
+  });
+  return taskData.id !== undefined ? (
     <>
       <TaskNav taskDescriptions={taskDescriptions} />
       <FullWidthHR />
       <TaskEntryPage id={parseInt(id as string, 10)} taskData={taskData} />
     </>
-  );
+  ) : null;
 };
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const id: number = parseInt(context.params.id as string, 10);
   const { getTaskById, getAllTaskDescriptions } = tasksDb("tasks");
   const taskDataDb = await getTaskById(id);
-  if (!taskDataDb || !taskDataDb._id) {
-    context.res.writeHead(301, { Location: "no-task-yet" });
-    context.res.end();
-  }
   const taskDescriptions = await getAllTaskDescriptions();
   return {
     props: {
