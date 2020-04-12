@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import addHours from "date-fns/addHours";
 import { format } from "date-fns";
-import taskList, {Task} from './data/index';
+import taskList, { Task } from "./data/index";
 
 const timeToEnglish = (time: Date): string =>
   format(time, `yyyy LLLL do, HH:mm (OOOO)`);
@@ -29,16 +29,18 @@ const StyledTaskListLi = styled.p`
   padding-bottom: 10px;
 `;
 
-const TaskList: React.FC<{}> = () => {
+const TaskList: React.FC<{
+  taskDescriptions: Array<{ id: number; description: string }>;
+}> = ({ taskDescriptions }) => {
   return (
     <div>
       Task List:
       <StyledTaskListFlex>
         <StyledTaskList>
-          {taskList.map((task: Task, index: number) => (
-            <StyledTaskListLi key={task.description}>
-              <a href={`Tasks/${index + 1}`}>
-                {`Task #${index + 1}`}: {task.description}
+          {taskDescriptions.map(({ id, description }) => (
+            <StyledTaskListLi key={description}>
+              <a href={`Tasks/${id}`}>
+                {`Task #${id}`}: {description}
               </a>
             </StyledTaskListLi>
           ))}

@@ -77,8 +77,9 @@ const StyledClickable = styled.a`
 `;
 const IndexPage: NextPage<{
   leaderboard: Record<string, number>;
-  taskDescriptions: { id: number; description: string };
+  taskDescriptions: Array<{ id: number; description: string }>;
 }> = ({ leaderboard, taskDescriptions }) => {
+  console.log(taskDescriptions);
   const [isLeaderboardFull, setLeaderboardFull] = useState<boolean>(false);
   const [isLeaderboardAlphabetical, setLeaderboardAlphabetical] = useState<
     boolean
