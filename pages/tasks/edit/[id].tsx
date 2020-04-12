@@ -419,4 +419,4 @@ export const getServerSideProps: GetServerSideProps = async context => {
   return { props: { taskData: omit(res, ["_id"]) || {} } };
 };
 
-export default requireUser(EditTask);
+export default EditTask;
