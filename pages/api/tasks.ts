@@ -1,8 +1,8 @@
 import Tasks from "../../db/Tasks";
 
-export const tasksApi = (database: string, collection: string) => {
+export const tasksApi = (collection: string) => {
   const handleGet = async (req, res) => {
-    const { getTaskById } = Tasks(database, collection);
+    const { getTaskById } = Tasks(collection);
     const id = parseInt(req.query.id, 10);
     try {
       const data = await getTaskById(id);
@@ -15,7 +15,7 @@ export const tasksApi = (database: string, collection: string) => {
   };
 
   const handlePost = async (req, res) => {
-    const { addTask } = Tasks(database, collection);
+    const { addTask } = Tasks(collection);
     try {
       const data = await addTask(req.body);
       return res.status(200).json(data);
@@ -40,4 +40,4 @@ export const tasksApi = (database: string, collection: string) => {
   };
 };
 
-export default tasksApi("hometasking", "tasks");
+export default tasksApi("tasks");

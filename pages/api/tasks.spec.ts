@@ -45,7 +45,7 @@ describe("tests api", () => {
     app = express();
     app.use(cors());
     app.use(bodyParser.json());
-    app.use("/api/tasks", tasksApi("hometasking-test", "tasks"));
+    app.use("/api/tasks", tasksApi("tasks-test"));
     server = app.listen(4000, () => {
       console.log("test server is running on port 4000");
       done();

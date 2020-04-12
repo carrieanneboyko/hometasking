@@ -14,7 +14,7 @@ const Tasks: NextPage<{ taskData: Task }> = ({ taskData }) => {
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const id: number = parseInt(context.params.id as string, 10);
-  const { getTaskById } = tasksDb("hometasking", "tasks");
+  const { getTaskById } = tasksDb("tasks");
   const taskDataDb = await getTaskById(id);
   if (!taskDataDb || !taskDataDb._id) {
     context.res.writeHead(301, { Location: "no-task-yet" });

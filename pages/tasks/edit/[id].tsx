@@ -414,7 +414,7 @@ const EditTask: NextPage<{ taskData?: Partial<Task> }> = ({ taskData }) => {
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const id: number = parseInt(context.params.id as string, 10);
-  const { getTaskById } = Tasks("hometasking", "tasks");
+  const { getTaskById } = Tasks("tasks");
   const res = await getTaskById(id);
   return { props: { taskData: omit(res, ["_id"]) || {} } };
 };
