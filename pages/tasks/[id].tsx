@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { NextPage, GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import TaskEntryPage from "../../components/TaskEntryPage";
@@ -7,6 +7,7 @@ import FullWidthHR from "../../components/styled/FullWidthHR";
 import tasksDb from "../../db/Tasks";
 import { Task } from "../../components/Tasks/data";
 import omit from "lodash/omit";
+import NoTaskYet from "../../components/NoTaskYet";
 
 const Tasks: NextPage<{
   taskData: Task;
@@ -14,18 +15,15 @@ const Tasks: NextPage<{
 }> = ({ taskData, taskDescriptions }) => {
   const router = useRouter();
   const { id } = router.query;
-  useEffect(() => {
-    if (typeof window !== undefined && taskData.id === undefined) {
-      router.push("/no-task-yet");
-    }
-  });
   return taskData.id !== undefined ? (
     <>
       <TaskNav taskDescriptions={taskDescriptions} />
       <FullWidthHR />
       <TaskEntryPage id={parseInt(id as string, 10)} taskData={taskData} />
     </>
-  ) : null;
+  ) : (
+    <NoTaskYet id={id as string} />
+  );
 };
 
 export const getServerSideProps: GetServerSideProps = async context => {
