@@ -9,10 +9,6 @@ import TaskTemplate from "../../../components/Tasks/TaskTemplate";
 import axios from "axios";
 import omit from "lodash/omit";
 import differenceInMilliseconds from "date-fns/differenceInMilliseconds";
-import {
-  useAuth0,
-  requireUser
-} from "../../../components/Auth0HOC/Auth0Provider";
 
 const MS_IN_HOUR = 60 * 60 * 1000;
 
@@ -112,7 +108,6 @@ const timeReducer = (state: Date, action: TimeAction) => {
 };
 
 const EditTask: NextPage<{ taskData?: Partial<Task> }> = ({ taskData }) => {
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   const router = useRouter();
   const id = parseInt(router.query.id as string, 10);
   const [loadingStatus, setLoadingStatus] = useState<string>(
@@ -121,7 +116,10 @@ const EditTask: NextPage<{ taskData?: Partial<Task> }> = ({ taskData }) => {
   const [description, setDescription] = useState<string>(
     taskData.description || ""
   );
-  const [startTime, dispatchStartTime] = useReducer(timeReducer, new Date());
+  const [startTime, dispatchStartTime] = useReducer(
+    timeReducer,
+    taskData.startTime ? new Date(taskData.startTime) : new Date()
+  );
   const [hours, setHours] = useState<number>(findDefaultHours(taskData));
   const [announcement, setAnnouncement] = useState<string>(
     taskData.announcement || ""
@@ -213,7 +211,6 @@ const EditTask: NextPage<{ taskData?: Partial<Task> }> = ({ taskData }) => {
   return (
     <div>
       <h2>{loadingStatus}</h2>
-      <h4>Welcome {user && user.nickname}</h4>
       <div>Forgive the unpolished nature of the backend</div>
       <div>Not a lot of time to do validation or verification</div>
       <pre>{JSON.stringify(taskData, null, 2)}</pre>
