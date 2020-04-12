@@ -10,7 +10,17 @@ const Tasks = (collection: string) => {
     dbClose();
     return res;
   };
+  const getAllTaskDescriptions = async () => {
+    const { db, dbClose } = await connect();
 
+    const cursor = db.collection(collection);
+    const res = await cursor
+      .find({})
+      .project({ description: 1, id: 1 })
+      .toArray();
+    dbClose();
+    return res;
+  };
   const addTask = async (taskInfo: Partial<Task>) => {
     const { db, dbClose } = await connect();
     const cursor = db.collection(collection);
@@ -28,7 +38,7 @@ const Tasks = (collection: string) => {
     }
     return res.value;
   };
-  return { getTaskById, addTask };
+  return { getTaskById, addTask, getAllTaskDescriptions };
 };
 
 export default Tasks;

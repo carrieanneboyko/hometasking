@@ -21,7 +21,7 @@ export const taskList: Task[] = [
   {
     id: 1,
     number: "Task #1",
-    description: "Throw a piece of A4 Paper into the Bin.",
+    description: "Throw a piece of A4 paper into a bin.",
     url: "/tasks/1",
     startTime: new Date("March 23, 2020, 9:00 GMT"),
     endTime: addHours(new Date("March 23, 2020, 9:00 GMT"), 30),

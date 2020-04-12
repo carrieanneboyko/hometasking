@@ -6,6 +6,8 @@ import VideoHolder from "../components/VideoHolder";
 import TaskList from "../components/Tasks/TaskList";
 import FullWidthHR from "../components/styled/FullWidthHR";
 import pointsDb from "../db/Points";
+import tasksDb from "../db/Tasks";
+
 import { NextPage, GetServerSideProps } from "next";
 
 const MainStyle = styled.div`
@@ -73,9 +75,10 @@ const StyledClickable = styled.a`
   text-decoration: underline;
   color: blue;
 `;
-const IndexPage: NextPage<{ leaderboard: Record<string, number> }> = ({
-  leaderboard
-}) => {
+const IndexPage: NextPage<{
+  leaderboard: Record<string, number>;
+  taskDescriptions: { id: number; description: string };
+}> = ({ leaderboard, taskDescriptions }) => {
   const [isLeaderboardFull, setLeaderboardFull] = useState<boolean>(false);
   const [isLeaderboardAlphabetical, setLeaderboardAlphabetical] = useState<
     boolean
@@ -95,7 +98,7 @@ const IndexPage: NextPage<{ leaderboard: Record<string, number> }> = ({
       <HomeTaskingIntro />
       <FullWidthHR />
 
-      <TaskList />
+      <TaskList taskDescriptions={taskDescriptions} />
       <FullWidthHR />
       <StyledClickable
         href="https://docs.google.com/spreadsheets/d/1VvOh2ruA75sLL9DoDrZO28BYEcUTo9b3CykDjFm74cM/edit#gid=0"
@@ -150,9 +153,11 @@ const IndexPage: NextPage<{ leaderboard: Record<string, number> }> = ({
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const { getAllPoints } = pointsDb("tasks");
+  const { getAllTaskDescriptions } = tasksDb("tasks");
   const leaderboard = await getAllPoints();
+  const taskDescriptions = await getAllTaskDescriptions();
 
-  return { props: { leaderboard } };
+  return { props: { leaderboard, taskDescriptions } };
 };
 
 export default IndexPage;
