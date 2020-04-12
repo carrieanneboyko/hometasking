@@ -149,7 +149,7 @@ const IndexPage: NextPage<{ leaderboard: Record<string, number> }> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { getAllPoints } = pointsDb("hometasking", "tasks");
+  const { getAllPoints } = pointsDb("tasks");
   const leaderboard = await getAllPoints();
 
   return { props: { leaderboard } };
