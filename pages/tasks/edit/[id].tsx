@@ -80,25 +80,28 @@ const pointsReducer = (state: Points, action: PointsAction) => {
   }
 };
 
+const safeguardTime = (proxy: Date, state: Date): Date =>
+  proxy instanceof Date && !isNaN(proxy.valueOf()) ? proxy : state;
+
 const timeReducer = (state: Date, action: TimeAction) => {
   try {
     const proxy = new Date(state.getTime());
     switch (action.type) {
       case "year":
         proxy.setFullYear(action.year);
-        return proxy;
+        return safeguardTime(proxy, state);
       case "month":
         proxy.setMonth(action.month - 1); // month array starts at 0. Idiotic Javascript choice.
-        return proxy;
+        return safeguardTime(proxy, state);
       case "date":
         proxy.setDate(action.date);
-        return proxy;
+        return safeguardTime(proxy, state);
       case "hour":
         proxy.setHours(action.hour);
-        return proxy;
+        return safeguardTime(proxy, state);
       case "minute":
         proxy.setMinutes(action.minute);
-        return proxy;
+        return safeguardTime(proxy, state);
       default:
         return state;
     }
