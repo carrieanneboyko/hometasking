@@ -15,7 +15,7 @@ const Tasks: NextPage<{
   const router = useRouter();
   const { id } = router.query;
   useEffect(() => {
-    if (typeof window !== undefined) {
+    if (typeof window !== undefined && taskData.id === undefined) {
       router.push("/no-task-yet");
     }
   });
