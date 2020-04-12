@@ -5,6 +5,7 @@ export type TaskPoints = Record<string, number>;
 export type AllPoints = Record<string, TaskPoints>;
 
 export interface Task {
+  id: number;
   number: string;
   description: string;
   url: string;
@@ -18,6 +19,7 @@ export interface Task {
 
 export const taskList: Task[] = [
   {
+    id: 1,
     number: "Task #1",
     description: "Throw a piece of A4 Paper into the Bin.",
     url: "/tasks/1",
@@ -46,6 +48,7 @@ export const taskList: Task[] = [
     }
   },
   {
+    id: 2,
     number: "Task #2",
     description: "Convert your bathroom into a nice venue.",
     url: "/tasks/2",
@@ -73,6 +76,7 @@ export const taskList: Task[] = [
     }
   },
   {
+    id: 3,
     number: "Task #3",
     description: "Make the best dancing elephant.",
     url: "/tasks/3",
@@ -99,6 +103,7 @@ export const taskList: Task[] = [
     ]
   },
   {
+    id: 4,
     number: "Task #4",
     description: "Camouflage yourself, and then reveal yourself.",
     url: "/tasks/4",
@@ -127,6 +132,7 @@ export const taskList: Task[] = [
     ]
   },
   {
+    id: 5,
     number: "Task #5",
     description: "Create an epic moment of sporting glory in your kitchen.",
     url: "/tasks/5",
@@ -156,6 +162,7 @@ export const taskList: Task[] = [
     ]
   },
   {
+    id: 6,
     number: "Task #6",
     description: "Do the most extraordinary thing with a pair of trousers.",
     url: "/tasks/6",
@@ -183,6 +190,7 @@ export const taskList: Task[] = [
     }
   },
   {
+    id: 7,
     number: "Task #7",
     description: "Silently recreate an iconic movie moment.",
     url: "/tasks/7",
