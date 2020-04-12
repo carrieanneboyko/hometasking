@@ -1,9 +1,14 @@
 import connect from "./connect";
 import { Task } from "../components/Tasks/data";
 
-const Tasks = (dbName: string, collection: string) => {
+const Tasks = (providedDbName: string, collection: string) => {
+  const dbName: string =
+    process.env.NODE_ENV === "production"
+      ? process.env.DB_NAME
+      : providedDbName;
   const getTaskById = async (taskId: number) => {
     const db = await connect();
+
     const cursor = db.db(dbName).collection(collection);
     const res = await cursor.findOne({ id: taskId });
     db.close();

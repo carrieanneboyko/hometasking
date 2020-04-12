@@ -1,9 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const URL = process.env.MONGODB_URI
-  ? `${process.env.MONGODB_URI}`
-  : "mongodb://localhost:27017/";
-console.log({ URL });
+const URL = process.env.MONGODB_URI;
 
 const connect = (): Promise<MongoClient> =>
   new Promise((resolve, reject) => {

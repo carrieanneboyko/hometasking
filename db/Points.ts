@@ -1,6 +1,10 @@
 import connect from "./connect";
 
-const Points = (dbName: string, collection: string) => {
+const Points = (providedDbName: string, collection: string) => {
+  const dbName: string =
+    process.env.NODE_ENV === "production"
+      ? process.env.DB_NAME
+      : providedDbName;
   const getAllPoints = async () => {
     const db = await connect();
     const cursor = db.db(dbName).collection(collection);
