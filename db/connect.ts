@@ -7,6 +7,7 @@ const connect = (): Promise<any> =>
   new Promise((resolve, reject) => {
     MongoClient.connect(URL, (err, client: MongoClient) => {
       if (err) {
+        console.error(err);
         reject(err);
       }
       resolve({ dbClose: () => client.close(), db: client.db(DB_NAME) });

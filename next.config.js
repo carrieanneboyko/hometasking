@@ -16,6 +16,7 @@ module.exports = (phase, { defaultConfig }) => {
         process.env.TWITTER_TOKEN_SECRET ||
         process.env.REACT_APP_TWITTER_TOKEN_SECRET,
       MONGOLAB_URI: process.env.MONGOLAB_URI || "mongodb://localhost:27017/",
+      DB_NAME: process.env.DB_NAME || "hometasking",
       AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
       AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
       AUTH0_REDIRECT_URI: process.env.AUTH0_REDIRECT_URI

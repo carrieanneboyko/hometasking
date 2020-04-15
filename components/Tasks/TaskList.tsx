@@ -37,7 +37,7 @@ const TaskList: React.FC<{
       Task List:
       <StyledTaskListFlex>
         <StyledTaskList>
-          {taskDescriptions.map(({ id, description }) => (
+          {taskDescriptions.sort((t1, t2) => t1.id - t2.id).map(({ id, description }) => (
             <StyledTaskListLi key={description}>
               <a href={`tasks/${id}`}>
                 {`Task #${id}`}: {description}
