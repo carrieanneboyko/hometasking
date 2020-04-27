@@ -144,6 +144,13 @@ const IndexPage: NextPage<{
       <CovidDos />
       <h3>Here's how long to wash your hands</h3>
       <WashHands />
+
+      <FullWidthHR />
+      <TimeStartsNow text={`News & Specialised Tasks`} />
+
+      <StyledClickable href="/katie-dustin-proposal" target="_blank">
+        {`Katie & Dustin's Proposal`}
+      </StyledClickable>
     </MainStyle>
   );
 };

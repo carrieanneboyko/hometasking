@@ -5,9 +5,9 @@ const TaskmasterH1 = styled.h1`
   font-family: "Special Elite";
 `;
 
-const TimeStartsNow: React.FC<{}> = () => (
+const TimeStartsNow: React.FC<{ text?: string }> = ({ text }) => (
   <div className="taskmaster">
-    <TaskmasterH1>Your time starts now.</TaskmasterH1>
+    <TaskmasterH1>{text || `Your time starts now.`}</TaskmasterH1>
   </div>
 );
 
