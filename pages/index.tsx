@@ -19,6 +19,11 @@ const NotTaskStyle = styled.div`
   text-align: left;
 `;
 
+const TaskmasterH1 = styled.h1`
+  font-family: "Special Elite", Courier New, Courier, monospace;
+  text-align: center;
+`;
+
 const WashHands: React.FC<{}> = () => (
   <VideoHolder
     isTaskmaster={false}
@@ -91,6 +96,11 @@ const IndexPage: NextPage<{
   return (
     <MainStyle>
       <TimeStartsNow />
+      <FullWidthHR />
+      <TaskmasterH1>
+        <a href="/tasks/shoc/nitefort">Current Special Task: #nitefort</a>
+      </TaskmasterH1>
+      <FullWidthHR />
       <HomeTaskingIntro />
       <FullWidthHR />
 
